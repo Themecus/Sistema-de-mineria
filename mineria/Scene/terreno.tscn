@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cawfefjg3q8md"]
+
+[ext_resource type="PackedScene" uid="uid://bqun0prrb2ilv" path="res://Scene/tierra.tscn" id="1_eq20d"]
+[ext_resource type="PackedScene" uid="uid://dfd7dyis71yvx" path="res://Scene/minero.tscn" id="2_rtpcl"]
+
+[node name="Terreno" type="Node2D"]
+
+[node name="Tierra" parent="." instance=ExtResource("1_eq20d")]
+position = Vector2(133, 318)
+
+[node name="Tierra2" parent="." instance=ExtResource("1_eq20d")]
+position = Vector2(133, 182)
+
+[node name="Tierra3" parent="." instance=ExtResource("1_eq20d")]
+position = Vector2(133, 451)
+
+[node name="Minero" parent="." instance=ExtResource("2_rtpcl")]
+position = Vector2(809, 310)

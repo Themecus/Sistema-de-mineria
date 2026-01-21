@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfd7dyis71yvx"]
+
+[ext_resource type="Script" uid="uid://c2icbo37keoxq" path="res://Scripts/minero.gd" id="1_qnohi"]
+[ext_resource type="Texture2D" uid="uid://c61h8re3rqcxy" path="res://icon.svg" id="2_uxdkk"]
+[ext_resource type="PackedScene" uid="uid://b42k1mykuk687" path="res://Scene/pala.tscn" id="3_uxdkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfth"]
+size = Vector2(132, 130)
+
+[node name="Minero" type="CharacterBody2D"]
+script = ExtResource("1_qnohi")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture_filter = 2
+texture = ExtResource("2_uxdkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_qvfth")
+
+[node name="Pala" parent="." instance=ExtResource("3_uxdkk")]
+position = Vector2(-89, 2)
