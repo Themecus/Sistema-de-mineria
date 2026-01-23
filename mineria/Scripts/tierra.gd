@@ -11,7 +11,7 @@ func _process(delta):
 
 func accion(delta):
 	if(minando):#si esta minando entra aqui
-		intervalos+=delta#se ira sumando con delta, siendo delta el tiempo transcurrido tras el ultimo frame, es decir, cada segundo tomalo como un frame
+		intervalos+=delta*16#se ira sumando con delta, siendo delta el tiempo transcurrido tras el ultimo frame, es decir, cada segundo tomalo como un frame
 		#se ira sumando en base a ese tiempo de forma lenta y no instantanea
 		if intervalos>=velocida_minado:#cuando este listo se resetea, para que no se ahaga al instante
 			intervalos=0
@@ -22,7 +22,9 @@ func accion(delta):
 		
 			
 func _on_area_2d_area_entered(area: Area2D):
-	minando=true
+	if area.name=="Pala":
+		minando=true
 
 func _on_area_2d_area_exited(area: Area2D):
-	minando=false
+	if area.name=="Pala":
+		minando=false

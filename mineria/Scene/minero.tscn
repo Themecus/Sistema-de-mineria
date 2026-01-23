@@ -8,6 +8,8 @@
 size = Vector2(132, 130)
 
 [node name="Minero" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
+collision_layer = 2
 script = ExtResource("1_qnohi")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -20,3 +22,5 @@ shape = SubResource("RectangleShape2D_qvfth")
 
 [node name="Pala" parent="." instance=ExtResource("3_uxdkk")]
 position = Vector2(-89, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]

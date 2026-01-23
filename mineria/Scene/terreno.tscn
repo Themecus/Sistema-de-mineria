@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cawfefjg3q8md"]
+[gd_scene load_steps=4 format=3 uid="uid://cawfefjg3q8md"]
 
+[ext_resource type="Script" uid="uid://bjc4qi23kp250" path="res://Scripts/terreno.gd" id="1_6i3ml"]
 [ext_resource type="PackedScene" uid="uid://bqun0prrb2ilv" path="res://Scene/tierra.tscn" id="1_eq20d"]
 [ext_resource type="PackedScene" uid="uid://dfd7dyis71yvx" path="res://Scene/minero.tscn" id="2_rtpcl"]
 
 [node name="Terreno" type="Node2D"]
+script = ExtResource("1_6i3ml")
 
 [node name="Tierra" parent="." instance=ExtResource("1_eq20d")]
 position = Vector2(133, 318)
@@ -15,4 +17,7 @@ position = Vector2(133, 182)
 position = Vector2(133, 451)
 
 [node name="Minero" parent="." instance=ExtResource("2_rtpcl")]
-position = Vector2(809, 310)
+position = Vector2(1698, 306)
+
+[node name="Tierra4" parent="." instance=ExtResource("1_eq20d")]
+position = Vector2(232, 130)

@@ -1,15 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqun0prrb2ilv"]
 
 [ext_resource type="Texture2D" uid="uid://c61h8re3rqcxy" path="res://icon.svg" id="1_jke7w"]
-[ext_resource type="Script" uid="uid://6k3710n1ge2" path="res://Scene/tierra.gd" id="1_llkdm"]
+[ext_resource type="Script" uid="uid://6k3710n1ge2" path="res://Scripts/tierra.gd" id="1_llkdm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llkdm"]
-size = Vector2(133, 134)
+size = Vector2(135, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld7tj"]
 size = Vector2(122, 119)
 
 [node name="Tierra" type="StaticBody2D"]
+collision_mask = 4
 script = ExtResource("1_llkdm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
