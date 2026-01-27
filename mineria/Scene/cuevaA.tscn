@@ -1,0 +1,30 @@
+[gd_scene format=4 uid="uid://x0qcnn6lh7pv"]
+
+[ext_resource type="PackedScene" uid="uid://bqun0prrb2ilv" path="res://Scene/tierra.tscn" id="1_pd1e5"]
+[ext_resource type="PackedScene" uid="uid://ccwkrxc5pfxbc" path="res://Scene/tierra2.tscn" id="2_2fj2f"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2fj2f"]
+scenes/1/scene = ExtResource("1_pd1e5")
+scenes/2/scene = ExtResource("2_2fj2f")
+
+[sub_resource type="TileSet" id="TileSet_dpq2j"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_2fj2f")
+
+[node name="Node2D" type="Node2D" unique_id=1318853558]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=287757300]
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAgD/////AAAAAAAAAgAAAP//AAAAAAAAAgAAAAAAAAAAAAAAAgD///7/AAAAAAAAAgAAAP7/AAAAAAAAAgABAP7/AAAAAAAAAgABAP//AAAAAAAAAgABAAAAAAAAAAAAAgD+/wAAAAAAAAAAAQD+////AAAAAAAAAQD+//7/AAAAAAAAAQD+//3/AAAAAAAAAQD///3/AAAAAAAAAQAAAP3/AAAAAAAAAQABAP3/AAAAAAAAAQACAP3/AAAAAAAAAQACAP7/AAAAAAAAAQACAP//AAAAAAAAAQACAAAAAAAAAAAAAQACAAEAAAAAAAAAAQABAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQD//wEAAAAAAAAAAQD+/wEAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_dpq2j")
+
+[node name="Abajo" type="Marker2D" parent="." unique_id=1174900848]
+position = Vector2(64, 256)
+
+[node name="Izquierda" type="Marker2D" parent="." unique_id=1322500472]
+position = Vector2(-256, -63)
+
+[node name="Derecha" type="Marker2D" parent="." unique_id=1307421917]
+position = Vector2(384, -63)
+
+[node name="Arriba" type="Marker2D" parent="." unique_id=621523365]
+position = Vector2(64, -384)

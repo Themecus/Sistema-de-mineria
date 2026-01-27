@@ -2,13 +2,12 @@ extends Node2D
 
 @export var bloque_scene: PackedScene = preload("res://Scene/tierra.tscn")
 @export var bloque_scene2: PackedScene = preload("res://Scene/tierra2.tscn")
-@export var cuevaA: PackedScene = preload("res://Scene/cuevaA.tscn")
-@export var cuevaB: PackedScene = preload("res://Scene/cuevaB.tscn")
 @export var deep_suelo = 25
 @export var largo_suelo = 25
 @export var separacion_x = 130
 @export var separacion_y = 130
 @export var offset_inicial = Vector2(100, 100)
+
 # Probabilidades
 @export var prob_centro_max: float = 0.9    # 90% en centro
 @export var prob_borde_min: float = 0.3     # 30% en bordes
@@ -17,115 +16,7 @@ extends Node2D
 func _ready():
 	randomize()
 	#bordes()
-	#generar_cuadricula()
-	#colocador()
-	colocador_automatico()
-
-
-func colocador_automatico():
-	var total_cuevas = 3
-	var cuevas = []
-	var conexiones_activas = []  # Array de markers disponibles
-	
-	# Cueva inicial
-	var cueva1 = cuevaA.instantiate()
-	cueva1.position = Vector2.ZERO
-	add_child(cueva1)
-	cuevas.append(cueva1)
-	
-	# Añadir sus 4 markers como conexiones
-	conexiones_activas.append_array([
-		cueva1.get_node("Arriba"),
-		cueva1.get_node("Abajo"),
-		cueva1.get_node("Izquierda"),
-		cueva1.get_node("Derecha")
-	])
-	
-	while cuevas.size() < total_cuevas and conexiones_activas.size() > 0:
-		# 1. Elegir conexión aleatoria
-		var idx_conexion = randi() % conexiones_activas.size()
-		var marker_salida = conexiones_activas[idx_conexion]
-		
-		# 2. Determinar dirección opuesta
-		var direccion_salida = marker_salida.name
-		var direccion_entrada = ""
-		
-		match direccion_salida:
-			"Arriba": direccion_entrada = "Abajo"
-			"Abajo": direccion_entrada = "Arriba"
-			"Izquierda": direccion_entrada = "Derecha"
-			"Derecha": direccion_entrada = "Izquierda"
-		
-		# 3. Elegir tipo de cueva aleatoria
-		var nueva_cueva = cuevaA.instantiate() if randi() % 2 == 0 else cuevaB.instantiate()
-		
-		# 4. Verificar que tenga el marker de entrada necesario
-		if nueva_cueva.has_node(direccion_entrada):
-			add_child(nueva_cueva)
-			
-			# 5. Conectar
-			var marker_entrada = nueva_cueva.get_node(direccion_entrada)
-			var offset = marker_salida.global_position - marker_entrada.global_position
-			nueva_cueva.global_position += offset
-			
-			cuevas.append(nueva_cueva)
-			
-			# 6. Añadir NUEVAS conexiones (excepto la usada)
-			for dir in ["Arriba", "Abajo", "Izquierda", "Derecha"]:
-				if dir != direccion_entrada:  # No añadir la usada
-					var marker = nueva_cueva.get_node(dir)
-					if marker:
-						conexiones_activas.append(marker)
-		
-		# 7. Remover conexión usada
-		conexiones_activas.remove_at(idx_conexion)
-	
-
-func colocador():
-	var contador=0
-	var mi_lista = []
-	var mi_lista2 = []
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	
-	var cueva1 = cuevaA.instantiate()
-	mi_lista.append(cueva1.get_node("Arriba"))
-	mi_lista.append(cueva1.get_node("Abajo"))
-	mi_lista.append(cueva1.get_node("Izquierda"))
-	mi_lista.append(cueva1.get_node("Derecha"))
-	var numeral=randi_range(0, 3) 
-	var numeral2=0
-	var cueva2 = cuevaB.instantiate()
-	mi_lista2.append(cueva2.get_node("Arriba"))
-	mi_lista2.append(cueva2.get_node("Abajo"))
-	mi_lista2.append(cueva2.get_node("Izquierda"))
-	mi_lista2.append(cueva2.get_node("Derecha"))
-	
-	if mi_lista[numeral]==cueva1.get_node("Arriba"):
-		numeral2=1
-	if mi_lista[numeral]==cueva1.get_node("Abajo"):
-		numeral2=0
-	if mi_lista[numeral]==cueva1.get_node("Izquierda"):
-		numeral2=3
-	if mi_lista[numeral]==cueva1.get_node("Derecha"):
-		numeral2=2
-	
-	cueva1 = cuevaA.instantiate()
-	add_child(cueva1)
-	
-	# Obtener marker de SALIDA de cueva1
-	var mark_salida = mi_lista[numeral]  # Debes crear este nodo
-	
-	cueva2 = cuevaB.instantiate()
-	add_child(cueva2)
-	
-	# Obtener marker de ENTRADA de cueva2  
-	var mark_entrada = mi_lista2[numeral2]  # Debes crear este nodo
-	
-	# Calcular offset para conectar entrada con salida
-	var offset = mark_salida.global_position - mark_entrada.global_position
-	cueva2.global_position += offset
-
+	generar_cuadricula()
 
 func bordes():
 	var random = RandomNumberGenerator.new()

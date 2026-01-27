@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bqun0prrb2ilv"]
+[gd_scene load_steps=5 format=3 uid="uid://bqun0prrb2ilv"]
 
 [ext_resource type="Texture2D" uid="uid://c61h8re3rqcxy" path="res://icon.svg" id="1_jke7w"]
 [ext_resource type="Script" uid="uid://6k3710n1ge2" path="res://Scripts/tierra.gd" id="1_llkdm"]
@@ -9,20 +9,21 @@ size = Vector2(135, 135)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld7tj"]
 size = Vector2(122, 119)
 
-[node name="Tierra" type="StaticBody2D" unique_id=37032812]
+[node name="Tierra" type="StaticBody2D"]
+position = Vector2(64, 64)
 collision_mask = 4
 script = ExtResource("1_llkdm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53060348]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_llkdm")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=965264847]
+[node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("1_jke7w")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1775028795]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1108242756]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ld7tj")
 

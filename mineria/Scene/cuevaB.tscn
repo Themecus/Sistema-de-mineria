@@ -1,0 +1,28 @@
+[gd_scene format=4 uid="uid://bn2bvuji2ywei"]
+
+[ext_resource type="PackedScene" uid="uid://bqun0prrb2ilv" path="res://Scene/tierra.tscn" id="1_xwc8c"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2fj2f"]
+scenes/1/scene = ExtResource("1_xwc8c")
+
+[sub_resource type="TileSet" id="TileSet_dpq2j"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_2fj2f")
+
+[node name="Node2D" type="Node2D" unique_id=1318853558]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=287757300]
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAQD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAP//AAAAAAAAAQD///7/AAAAAAAAAQAAAP7/AAAAAAAAAQD+//7/AAAAAAAAAQD+////AAAAAAAAAQD+/wAAAAAAAAAAAQABAP7/AAAAAAAAAQABAP//AAAAAAAAAQABAAAAAAAAAAAAAQD+/wEAAAAAAAAAAQD//wEAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAEAAAAAAAAAAQD9//7/AAAAAAAAAQD9////AAAAAAAAAQD9/wAAAAAAAAAAAQD9/wEAAAAAAAAAAQD9/wIAAAAAAAAAAQD+/wIAAAAAAAAAAQD//wIAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_dpq2j")
+
+[node name="Arriba" type="Marker2D" parent="." unique_id=342751847]
+position = Vector2(-64, -256)
+
+[node name="Izquierda" type="Marker2D" parent="." unique_id=1356128557]
+position = Vector2(-384, 64)
+
+[node name="Abajo" type="Marker2D" parent="." unique_id=1327014831]
+position = Vector2(-64, 384)
+
+[node name="Derecha" type="Marker2D" parent="." unique_id=876780171]
+position = Vector2(256, 65)
