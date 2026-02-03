@@ -4,6 +4,9 @@ extends Node2D
 @export var bloque_scene2: PackedScene = preload("res://Scene/tierra2.tscn")
 @export var cuevaA: PackedScene = preload("res://Scene/cuevaA.tscn")
 @export var cuevaB: PackedScene = preload("res://Scene/cuevaB.tscn")
+@export var suelo: PackedScene = preload("res://Scene/tierra3.tscn")
+@export var suelo2: PackedScene = preload("res://Scene/tierra4.tscn")
+@export var generar: PackedScene = preload("res://Scene/masCamino.tscn")
 @export var deep_suelo = 25
 @export var largo_suelo = 25
 @export var separacion_x = 130
@@ -13,15 +16,33 @@ extends Node2D
 @export var prob_centro_max: float = 0.9    # 90% en centro
 @export var prob_borde_min: float = 0.3     # 30% en bordes
 @export var zona_llena_centro: float = 0.1  # 20% del centro SIEMPRE lleno
-
+var cont=0
 func _ready():
 	randomize()
 	#bordes()
 	#generar_cuadricula()
 	#colocador()
-	colocador_automatico()
+	#colocador_automatico()
+	escenario_infinity()
 
-
+func escenario_infinity():
+	var yY = 100
+	var tipos_suelo = [suelo, suelo2]  # Array con ambas escenas
+	
+	while cont < 30:
+		# Selección 50/50 aleatoria
+		var tipo_random = randi() % 2  # 0 o 1
+		var colSuelo = tipos_suelo[tipo_random].instantiate()
+		
+		add_child(colSuelo)
+		colSuelo.position = Vector2(100 + yY, 0)
+		yY += 100
+		cont += 1
+	
+	var colGenerador = generar.instantiate()
+	add_child(colGenerador)
+	colGenerador.position = Vector2(yY, 0)
+	
 func colocador_automatico():
 	var total_cuevas = 3
 	var cuevas = []

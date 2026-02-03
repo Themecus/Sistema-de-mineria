@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://x0qcnn6lh7pv"]
 
+[ext_resource type="Script" uid="uid://b6038au8h4gl2" path="res://Scripts/cueva_a.gd" id="1_matub"]
 [ext_resource type="PackedScene" uid="uid://bqun0prrb2ilv" path="res://Scene/tierra.tscn" id="1_pd1e5"]
 [ext_resource type="PackedScene" uid="uid://ccwkrxc5pfxbc" path="res://Scene/tierra2.tscn" id="2_2fj2f"]
+[ext_resource type="Texture2D" uid="uid://bddgc8q2yda0e" path="res://negro.png" id="3_dpq2j"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2fj2f"]
 scenes/1/scene = ExtResource("1_pd1e5")
@@ -12,6 +14,7 @@ tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetScenesCollectionSource_2fj2f")
 
 [node name="Node2D" type="Node2D" unique_id=1318853558]
+script = ExtResource("1_matub")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=287757300]
 tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAgD/////AAAAAAAAAgAAAP//AAAAAAAAAgAAAAAAAAAAAAAAAgD///7/AAAAAAAAAgAAAP7/AAAAAAAAAgABAP7/AAAAAAAAAgABAP//AAAAAAAAAgABAAAAAAAAAAAAAgD+/wAAAAAAAAAAAQD+////AAAAAAAAAQD+//7/AAAAAAAAAQD+//3/AAAAAAAAAQD///3/AAAAAAAAAQAAAP3/AAAAAAAAAQABAP3/AAAAAAAAAQACAP3/AAAAAAAAAQACAP7/AAAAAAAAAQACAP//AAAAAAAAAQACAAAAAAAAAAAAAQACAAEAAAAAAAAAAQABAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQD//wEAAAAAAAAAAQD+/wEAAAAAAAAAAQA=")
@@ -28,3 +31,14 @@ position = Vector2(384, -63)
 
 [node name="Arriba" type="Marker2D" parent="." unique_id=621523365]
 position = Vector2(64, -384)
+
+[node name="Tierra" parent="." unique_id=37032812 instance=ExtResource("1_pd1e5")]
+position = Vector2(67, -64)
+scale = Vector2(5.0980735, 5.0436172)
+
+[node name="Negro" type="Sprite2D" parent="." unique_id=1710466500]
+position = Vector2(67.50001, -63.00002)
+scale = Vector2(0.7632793, 1)
+texture = ExtResource("3_dpq2j")
+
+[connection signal="quita" from="Tierra" to="." method="_on_tierra_quita"]
